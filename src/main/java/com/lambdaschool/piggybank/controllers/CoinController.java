@@ -15,6 +15,22 @@ import java.util.List;
 @RestController
 public class CoinController
 {
+
+    private List<Coin> findCoins(List<Coin> myList, CheckCoin tester)
+    {
+        List<Coin> tempList = new ArrayList<>();
+
+        for (Coin c : myList)
+        {
+            if (tester.test(c))
+            {
+                tempList.add(c);
+            }
+        }
+
+        return tempList;
+    }
+
     @Autowired
     CoinRepository coinrepos;
 
@@ -25,28 +41,43 @@ public class CoinController
         List<Coin> myList = new ArrayList<>();
         coinrepos.findAll().iterator().forEachRemaining(myList::add);
 
-        int quantity = 0;
-        for (Coin c : myList)
-        {
-            quantity = quantity + c.getQuantity();
-        }
 
-        String name = "";
-        for (Coin c : myList)
-        {
-            name = name + c.getName();
-        }
+        myList.forEach((c) -> System.out.println(c.getQuantity()));
+        System.out.println();
+        myList.forEach((c) -> System.out.println(c.getName()));
+        System.out.println();
+        myList.forEach((c) -> System.out.println(c.getNameplural()));
+        System.out.println();
+        myList.forEach((c) -> System.out.println(c.getValue()));
+        System.out.println();
 
-        double total = 0;
-        for (Coin c : myList)
-        {
-            total = total + c.getValue();
-        }
 
-        System.out.println(quantity + " " + name);
-        System.out.println("The Piggy Bank holds " + total);
+//        int quantity = 0;
+//        for (Coin c : myList)
+//        {
+//            quantity = quantity + c.getQuantity();
+//        }
+//
+//        String name = "";
+//        for (Coin c : myList)
+//        {
+//            name = name + c.getName();
+//        }
+//
+//        double total = 0;
+//        for (Coin c : myList)
+//        {
+//            total = total + c.getValue();
+//        }
+//
+//
+//            System.out.println(rtnList);
+//        System.out.println(quantity + " " + name);
+//        System.out.println("The Piggy Bank holds " + total);
 
        // System.out.println(myList);
+
+
         return new ResponseEntity<>(myList, HttpStatus.OK);
     }
 }
