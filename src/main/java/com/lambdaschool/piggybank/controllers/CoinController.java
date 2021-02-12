@@ -42,58 +42,20 @@ public class CoinController
         coinrepos.findAll().iterator().forEachRemaining(myList::add);
 
 
-//        int quantity = 0;
-//        for (Coin c : myList)
-//        {
-//            quantity = quantity + c.getQuantity();
-//        }
-
-
         myList.forEach((c) -> {if(c.getQuantity() != 1) {
             System.out.println(c.getQuantity() + " " + c.getNameplural());
             } else {System.out.println(c.getQuantity() + " " + c.getName());}
         });
 
+        double total = 0.0;
+        for (Coin c : myList)
+        {
+            total = total + c.getQuantity() * c.getValue();
+        }
+
+        System.out.println("The Piggy Bank holds " + total);
 
 
-
-
-
-        System.out.println();
-//        myList.forEach((c) -> System.out.println(c.getName()));
-//        System.out.println();
-//        myList.forEach((c) -> System.out.println(c.getNameplural()));
-//        System.out.println();
-//        myList.forEach((c) -> System.out.println(c.getValue()));
-//        System.out.println();
-
-
-//        int quantity = 0;
-//        for (Coin c : myList)
-//        {
-//            quantity = quantity + c.getQuantity();
-//        }
-//
-//        String name = "";
-//        for (Coin c : myList)
-//        {
-//            name = name + c.getName();
-//        }
-//
-//        double total = 0;
-//        for (Coin c : myList)
-//        {
-//            total = total + c.getValue();
-//        }
-//
-//
-//            System.out.println(rtnList);
-//        System.out.println(quantity + " " + name);
-//        System.out.println("The Piggy Bank holds " + total);
-
-       // System.out.println(myList);
-
-
-        return new ResponseEntity<>(myList, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }
