@@ -16,20 +16,20 @@ import java.util.List;
 public class CoinController
 {
 
-    private List<Coin> findCoins(List<Coin> myList, CheckCoin tester)
-    {
-        List<Coin> tempList = new ArrayList<>();
-
-        for (Coin c : myList)
-        {
-            if (tester.test(c))
-            {
-                tempList.add(c);
-            }
-        }
-
-        return tempList;
-    }
+//    private List<Coin> findCoins(List<Coin> myList, CheckCoin tester)
+//    {
+//        List<Coin> tempList = new ArrayList<>();
+//
+//        for (Coin c : myList)
+//        {
+//            if (tester.test(c))
+//            {
+//                tempList.add(c);
+//            }
+//        }
+//
+//        return tempList;
+//    }
 
     @Autowired
     CoinRepository coinrepos;
@@ -42,14 +42,30 @@ public class CoinController
         coinrepos.findAll().iterator().forEachRemaining(myList::add);
 
 
-        myList.forEach((c) -> System.out.println(c.getQuantity()));
+//        int quantity = 0;
+//        for (Coin c : myList)
+//        {
+//            quantity = quantity + c.getQuantity();
+//        }
+
+
+        myList.forEach((c) -> {if(c.getQuantity() != 1) {
+            System.out.println(c.getQuantity() + " " + c.getNameplural());
+            } else {System.out.println(c.getQuantity() + " " + c.getName());}
+        });
+
+
+
+
+
+
         System.out.println();
-        myList.forEach((c) -> System.out.println(c.getName()));
-        System.out.println();
-        myList.forEach((c) -> System.out.println(c.getNameplural()));
-        System.out.println();
-        myList.forEach((c) -> System.out.println(c.getValue()));
-        System.out.println();
+//        myList.forEach((c) -> System.out.println(c.getName()));
+//        System.out.println();
+//        myList.forEach((c) -> System.out.println(c.getNameplural()));
+//        System.out.println();
+//        myList.forEach((c) -> System.out.println(c.getValue()));
+//        System.out.println();
 
 
 //        int quantity = 0;
