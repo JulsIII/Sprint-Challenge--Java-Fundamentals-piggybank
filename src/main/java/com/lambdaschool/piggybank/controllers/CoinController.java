@@ -16,21 +16,6 @@ import java.util.List;
 public class CoinController
 {
 
-//    private List<Coin> findCoins(List<Coin> myList, CheckCoin tester)
-//    {
-//        List<Coin> tempList = new ArrayList<>();
-//
-//        for (Coin c : myList)
-//        {
-//            if (tester.test(c))
-//            {
-//                tempList.add(c);
-//            }
-//        }
-//
-//        return tempList;
-//    }
-
     @Autowired
     CoinRepository coinrepos;
 
